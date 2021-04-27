@@ -1,0 +1,34 @@
+package com.example.techbug;
+
+public class User {
+    private int id;
+    private String first_name;
+    private String last_name;
+    private String email;
+
+    // private String image;
+
+    public User(int id, String first_name, String last_name, String email) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        // this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return first_name;
+    }
+
+    public String getLastName() {
+        return last_name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}

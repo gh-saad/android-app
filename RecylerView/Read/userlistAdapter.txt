@@ -1,0 +1,73 @@
+package com.example.techbug;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+public class userListAdapter extends RecyclerView.Adapter<userListAdapter.ProductViewHolder> {
+    private Context mCtx;
+    private static List<User> userlist;
+
+    public userListAdapter(Context mCtx, List<User> productList) {
+        this.mCtx = mCtx;
+        this.userlist = userlist;
+    }
+
+
+    @Override
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
+        View view = inflater.inflate(R.layout.user_card, null);
+        return new ProductViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull userListAdapter.ProductViewHolder holder, int position) {
+        User product = userlist.get(position);
+        //loading the image
+        //Glide.with(mCtx)
+        // .load(product.getImage())
+        // .into(holder.imageView);
+
+        // Picasso.with(mCtx).load(product.getImage()).into(holder.imageView);
+
+        holder.textViewTitle.setText(product.getFirstName());
+        //holder.textViewIngredient.setText(product.getIngredient());
+
+    }
+
+
+
+    @Override
+    public int getItemCount() {
+        return userlist.size();
+    }
+    class ProductViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textViewTitle, textViewIngredient ;
+        // ImageView imageView;
+
+        public ProductViewHolder(View itemView) {
+            super(itemView);
+
+            textViewTitle = itemView.findViewById(R.id.txt_userName);
+            //textViewIngredient = itemView.findViewById(R.id.textView2);
+            //textViewMethod = itemView.findViewById(R.id.textViewMethod);
+
+            // imageView = itemView.findViewById(R.id.imageView);
+
+        }
+
+
+
+
+    }
+
+}
