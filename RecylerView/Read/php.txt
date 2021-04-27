@@ -1,0 +1,36 @@
+<?php
+$servername = "localhost";
+$username = "id16475362_androiddb";
+$password = "Interview123$";
+$databse = "id16475362_android";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$databse);
+
+//creating a query
+$stmt = $conn->prepare("SELECT id, first_name, last_name, email FROM tbl_user");
+
+//executing the query 
+$stmt->execute();
+ 
+//binding results to the query 
+$stmt->bind_result($id,$first_name, $last_name, $email);
+
+$products = array();
+while($stmt->fetch()){
+ $temp = array();
+ $temp['id'] = $id; 
+ $temp['first_name'] = $first_name; 
+ $temp['last_name'] = $last_name; 
+ $temp['email'] = $email; 
+ 
+ 
+ array_push($products, $temp);
+ 
+ }
+ 
+  
+ //displaying the result in json format 
+ echo json_encode($products);
+?>
+
